@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tiny URL</title>
+        <style>
+            .center {
+                text-align: center;
+            }
+
+            .uppercase {
+                text-transform: uppercase;
+            }
+
+            .map {
+                border: 1px black solid;
+            }
+
+            .button {
+                background-color: black; /* Green */
+                cursor: pointer;
+                border: none;
+                color: white;
+                padding: 15px 32px 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 15px 32px 15px 32px;
+                border-radius: 10%;
+            }
+
+            table {
+                width: 100%;
+            }
+
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+
+            th {
+                height: 70px;
+            }
+
+            td {
+                height: 30px;
+            }
+
+            td,
+            th {
+                width: 25%;
+                text-align: center;
+            }
+
+            .form {
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="center">Tiny-URL Application</h1>
+        <div>
+            <table>
+                <thead>
+                    <td>Full URL</td>
+                    <td>Short URL</td>
+                    <td>No. of Hits</td>
+                </thead>
+                {% for url in urls%}
+                    <tr>
+                        <td><a target="_blank" href="{{ url.full_url }}" >{{ url.full_url }}</a></td>
+                        <td><a target="_blank" href="{% url 'tinyurl:hits' url.quoted_tiny_url %}" >{{ url.tiny_url }}</a></td>
+                        <td>{{ url.hits }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="center form">
+            <form action="" method="post" class="form-example">
+                <label for="full_url">Enter A Full URL: </label>
+                <input type="text" name="full_url" id="full_url" placeholder="https://www.tier.app/xyz" value="https://www.tier.app/xyz" required>
+                <input type="submit" value="Get A Tiny URL">
+            </form>
+        </div>
+    </body>
+</html>
