@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+class URLs(models.Model):
+    pass
+
+
+class URLsHits(models.Model):
+    pass
