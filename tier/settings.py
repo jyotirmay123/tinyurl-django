@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'tier.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'shorturl_db',
+        'NAME': 'tinyurl_db',
         'USER': 'db_user',
         'PASSWORD': 'db_pass',
         'HOST': '127.0.0.1',
